@@ -87,42 +87,153 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+#no green folders backround
+export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias on='source ~/.bashrc'
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# Reset
+NC='\033[0m'          # Text Color Reset, No color
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+## Regular Colors
+Black='\033[0;30m'    # Black
+Red='\033[0;31m'      # Red
+Green='\033[0;32m'    # Green
+Yellow='\033[0;33m'   # Yellow
+Blue='\033[0;34m'     # Blue
+Purple='\033[0;35m'   # Purple
+Cyan='\033[0;36m'     # Cyan
+White='\033[0;37m'    # White
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+## Bold
+BBlack='\033[1;30m'   # Black
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+BRed='\033[1;31m'     # Red
+BGreen='\033[1;32m'   # Green
+BYellow='\033[1;33m'  # Yellow
+BBlue='\033[1;34m'    # Blue
+BPurple='\033[1;35m'  # Purple
+BCyan='\033[1;36m'    # Cyan
+BWhite='\033[1;37m'   # White
+
+## Underline
+UBlack='\033[4;30m'   # Black
+URed='\033[4;31m'     # Red
+UGreen='\033[4;32m'   # Green
+UYellow='\033[4;33m'  # Yellow
+UBlue='\033[4;34m'    # Blue
+UPurple='\033[4;35m'  # Purple
+UCyan='\033[4;36m'    # Cyan
+UWhite='\033[4;37m'   # White
+
+## Background
+On_Black='\033[40m'   # Black
+On_Red='\033[41m'     # Red
+On_Green='\033[42m'   # Green
+On_Yellow='\033[43m'  # Yellow
+On_Blue='\033[44m'    # Blue
+On_Purple='\033[45m'  # Purple
+On_Cyan='\033[46m'    # Cyan
+On_White='\033[47m'   # White
+
+## High Intensty
+IBlack='\033[0;90m'   # Black
+IRed='\033[0;91m'     # Red
+IGreen='\033[0;92m'   # Green
+IYellow='\033[0;93m'  # Yellow
+IBlue='\033[0;94m'    # Blue
+IPurple='\033[0;95m'  # Purple
+ICyan='\033[0;96m'    # Cyan
+IWhite='\033[0;97m'   # White
+
+## Bold High Intensty
+BIBlack='\033[1;90m'  # Black
+BIRed='\033[1;91m'    # Red
+BIGreen='\033[1;92m'  # Green
+BIYellow='\033[1;93m' # Yellow
+BIBlue='\033[1;94m'   # Blue
+BIPurple='\033[1;95m' # Purple
+BICyan='\033[1;96m'   # Cyan
+BIWhite='\033[1;97m'  # White
+
+## High Intensty backgrounds
+On_IBlack='\033[0;100m' # Black
+On_IRed='\033[0;101m' # Red
+On_IGreen='\033[0;102m' # Green
+On_IYellow='\033[0;103m' # Yellow
+On_IBlue='\033[0;104m' # Blue
+On_IPurple='\033[10;95m' # Purple
+On_ICyan='\033[0;106m' # Cyan
+On_IWhite='\033[0;107m' # White
+
+## Various variables you might want for your PS1 prompt instead
+#Time12h='\T'
+#Time12a='\@'
+#PathShort='\w'
+#PathFull='\W'
+#NewLine='\n'
+#Jobs='\j'
 
 #connecting to git using SSH
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
-. /etc/os-release
+#eval $(ssh-agent -s)153 #ssh-add ~/.ssh/id_rsa
+#. /etc/os-release
+
+#   Time config
+TZ='America/Bogota'; export TZ
+dt=$(date)
+
+#   system variables
+OS=$(cat /etc/lsb-release | tail -n 1 | cut -c 22-39)
+DIR="$( dirname "$_" )"
+DIR=$(pwd "${DIR}")    # resolve its full path if need be
+me=$(basename $BASH_SOURCE)
+me="$DIR/$me"
+
+#   PROGRAM VERSIONS
 PEP8V=$(pep8 --version | cut -c 8-12)
 GCC_VER=$(gcc --version | head -n 1 |cut -c 13-17)
-#PYTHONV=$(python - 2>&1 | head -n 1 |cut -c 3-6)
+PYTHONV=$(python3 --version |cut -c 8-12)
+BET_V=$(betty --version | sed '3!d' |cut -c 10-13)
+SHL_CV=$(shellcheck --version | sed '2!d' |cut -c 10-15)
+VAL_V=$(valgrind --version |cut -c 10-15)
+
+#   internet connectivity
+if curl -s --head  --request GET www.google.com | grep "200 OK" > /dev/null ; then
+INTOK=$"OK"
+EMER_C=${On_Green}
+else
+INTOK=$"NOT OK"
+EMER_C=${On_Red}
+fi
 
 clear
+echo -e $" ${BIRed}     HOLBERTON SCHOOL${NC}       ${NC} ${dt}"
+echo -e $"${NC}                             ${On_Blue}         SYSTEM INFO         ${NC}"
+echo -e $"${NC} ${On_Red}                           ${NC} ${IBlue}OS:     ${NC} ${OS}${NC}"
+echo -e $"${NC} ${On_Red}         oHHHHHHHp,        ${NC} ${IBlue}MACHINE:${NC} $HOSTNAME ${NC}"
+echo -e $"${NC} ${On_Red}         HHHHHHHHHH,       ${NC} ${IBlue}WEB:    ${NC} ${EMER_C}${INTOK}${NC}"
+echo -e $"${NC} ${On_Red}         HHHHHHHHHHH,      ${NC} ${IBlue}SSH:    ${NC} ${SSH_CLIENT}"
+echo -e $"${NC} ${On_Red}        dHHHHHHHHHHHH      ${NC} ${IBlue}LANG:   ${NC} ${LANG}"
+echo -e $"${NC} ${On_Red}      ,dHH  HHHHHHHHH      ${NC}"
+echo -e $"${NC} ${On_Red}    ,oHHHHHHHHHHHHHHH      ${NC}"
+echo -e $"${NC} ${On_Red}  WHHHHHHP*''*HHHHHHH      ${NC} ${On_Blue}CONFIG FILES"
+echo -e $"${NC} ${On_Red}  '*OOP'      HHHHHHH      ${NC} ${IBlue}Bash:${NC}${me}"
+echo -e $"${NC} ${On_Red}            ,dHHHHHHH      ${NC} ${IBlue}Vim:${NC}./etc/vim/vimrc ./usr/share/vim/vimrc"
+echo -e $"${NC} ${On_Red}          ,dHHHHHHHHH      ${NC}"
+echo -e $"${NC} ${On_Red}        ,dHHHHHHHHHHH      ${NC} ${On_Blue}COMPLEMENTS"
+echo -e $"${NC} ${On_Red}       dHHHHHHHHHHHHH      ${NC} ${IBlue}-- C --${NC}        ${IBlue}-- PYTHON --${NC}"
+echo -e $"${NC} ${On_Red}      dHH  HHHH  HHHH      ${NC} gcc:       ${GCC_VER}    python 3:  ${PYTHONV}"
+echo -e $"${NC} ${On_Red}     AHHH  HHHH  HHP'      ${NC} betty:     ${BET_V}    pep8:      ${PEP8V}"
+echo -e $"${NC} ${On_Red}     HHHH        HHHHHHHHH ${NC} valgrind:  ${VAL_V}"
+echo -e $"${NC} ${On_Red}     VHHH  HHHH  HHHHHHHH7 ${NC} ${IBlue}-- SHELL --${NC}   ${IBlue}-- W3C --${NC}"
+echo -e $"${NC} ${On_Red}     'VHH  HHHH  HHHHHHHP  ${NC} Shellcheck: ${SHL_CV} ${NC} Validator: ${SHL_CV}"
+echo -e $"${NC} ${On_Red}       VHHHHHHHHHHHHHHP'   ${NC}"
+echo -e $"${NC} ${On_Red}        'HHHHHHHHHHHH'     ${NC}"
+echo -e $"${NC} ${On_Red}          '?HHHHHHHHHb     ${NC}"
+echo -e $"${NC} ${On_Red}            '?HHHHHHHH     ${NC}"
+echo -e $"${NC} ${On_Red}              'HHHHHHH     ${NC}"
+echo -e $"${NC} ${On_Red}               'HHHHHH     ${NC}"
+echo -e $"${NC} ${On_Red}       oHHo,    HHHHHW     ${NC} ${On_Blue}BASIC COMMANDS"
+echo -e $"${NC} ${On_Red}      aHHHHb   ,HHHHHV     ${NC} ${IBlue}-Search:${NC} find -iname "\"file\""${NC}"
+echo -e $"${NC} ${On_Red}      'HHHP'  ,oaHHHP      ${NC}"
+echo -e $"${NC} ${On_Red}        '?bvoHHHP*'        ${NC}"
+echo -e $"${NC} ${On_Red}                           ${NC}"
+PS1="${NC}[\[${BBlue}\]\W${NC}]\$(__git_ps1)\[${Yellow}\]\[${Green}\]$\[${NC}\] "
