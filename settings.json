@@ -1,0 +1,77 @@
+Appdata\Roaming\code\User\settings.json
+
+{
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "editor.smoothScrolling": true,
+    "editor.tabCompletion": "on",
+    "editor.rulers": [79],
+
+    "files.eol": "\n",
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\wsl.exe",
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#ff0000",
+        "editorWhitespace.foreground": "#043850",
+
+        "editor.hoverHighlightBackground": "#0e085f",
+
+        "editor.lineHighlightBackground": "#083877",
+        "editor.lineHighlightBorder": "#012050",
+
+        "terminal.foreground" : "#ffffff",
+        "terminal.background" : "#000000"
+    },
+    "editor.renderWhitespace": "all",
+    "editor.fontFamily": "Hasklig, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "Hasklig",
+    "vscode_custom_css.imports": [
+        "file:///C:/Users/Holberton/.vscode/extensions/robbowen.synthwave-vscode-0.0.7/synthwave84.css"
+        ],
+        "terminal.integrated.cursorBlinking": true,
+        "terminal.integrated.experimentalRefreshOnResume": true,
+        "workbench.colorTheme": "Darker Than Black"
+}
+
+
+.\vscode\settings.json
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.tokenColorCustomizations": {
+        "comments": "#28aefc",
+        "strings": "#daddc2",
+        "keywords": "#ea00ffe7",
+        "numbers": "#3bf88a",
+        "types": "#ffff71",
+        "functions": "#00ffd5",
+        "variables": "#ececec",
+        "textMateRules": [
+            {
+              "scope": "punctuation.definition.comment",
+              "settings": {
+                "foreground": "#28aefc",
+              }
+            }
+
+            {
+                "scope": "keyword",
+                "settings": {
+                  "foreground": "#eb1289",
+                }
+            }
+         ]
+    },
+    "files.associations": {
+        "stdlib.h": "c"
+    },
+    "files.exclude": {
+        "**/.cache": true,
+        "**/.vscode": true
+    },
+    "editor.cursorStyle": "block"
+}
