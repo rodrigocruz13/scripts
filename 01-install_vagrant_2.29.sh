@@ -23,7 +23,7 @@ sudo apt-get update
 sudo apt autoremove -y
 
 # 4. Install vagrant
-printf "\n\t${COLOR}Installing Vagrant 2.26${NC}\n"
+printf "\n\t${COLOR}Installing Vagrant 2.29${NC}\n"
 sudo apt-get install vagrant -y
 
 # 5. Adding the Ubuntu 16.04 (Xenial) image to your box list:
