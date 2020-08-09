@@ -12,10 +12,10 @@ sudo apt autoremove -y
 CURRENT=$PWD
 cd $HOME
 
-printf "\n\t${COLOR}Installing Matplotlib 3.0 and Pillow${NC}\n"
+printf "\n\t${COLOR}Installing scikit-learn 0.21${NC}\n"
+pip install --user scikit-learn==0.21
 
-pip3 install --user matplotlib==3.0
-pip3 install --user Pillow
-sudo apt-get install python3-tk
+printf "\n\t${COLOR}Installing scipy 1.3${NC}\n"
+pip install --user scipy==1.3
 
 cd $CURRENT
