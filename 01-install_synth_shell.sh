@@ -8,6 +8,7 @@ NC='\033[0m'       # No Color
 CURRENT=$PWD
 printf "\n\t${COLOR}Current dir: ${COLOR1}${CURRENT} ${NC}\n"
 
+cd "$HOME"
 sudo apt-get update
 sudo apt-get upgrade -y
 
@@ -21,4 +22,4 @@ cd synth-shell
 printf "\n\t${COLOR}Installing chrome${NC}\n"
 ./setup.sh
 
-cd $HOME
+cd "$CURRENT"

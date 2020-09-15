@@ -19,4 +19,9 @@ printf "\n\t${COLOR}Installing Pillow${NC}\n"
 pip3 install --user Pillow
 sudo apt-get install python3-tk -y
 
+
+printf "\n\t${COLOR}Installing x11${NC}\n"
+sudo apt-get update
+sudo apt-get install virtualbox-guest-x11
+
 cd $CURRENT
