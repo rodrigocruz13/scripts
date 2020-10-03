@@ -63,8 +63,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -90,11 +88,9 @@ fi
  # ************************************************************ #
 
  # old prompt
- 
+
  # Current directory in prompt : PS1="[\W]"
 # Current git branch __git_ps1
-
- 
 
  # Reset
  NC='\033[0m'          # Text Color Reset, No color
@@ -247,6 +243,6 @@ fi
 
  #no green folders backround
  export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
- 
+
  PS1="[\[\033[1;34m\]\W\[\033[0m]\]\$(__git_ps1)\[\033[1;36m\]\[\033[32m\]$ \[\033[0m\]"
 
