@@ -30,5 +30,3 @@ printf "\n\t${COLOR} ...  Rebooting ${NC}\n"
 sudo reboot
 
 cd $CURRENT
-
-google-chrome

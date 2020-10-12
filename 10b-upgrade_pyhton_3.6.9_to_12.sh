@@ -14,7 +14,7 @@ CURRENT=$PWD
 
 
 printf "\n\t${COLOR}1 – moving to usr/src ${NC}\n"
-cd /usr/src
+cd /usr/bin
 
 printf "\n\t${COLOR}2 – Downloading 3.6.12 ${NC}\n"
 sudo wget https://www.python.org/ftp/python/3.6.12/Python-3.6.12.tgz
@@ -32,5 +32,3 @@ printf "\n\t${COLOR}6 – Installing ${NC}\n"
 sudo make altinstall
 
 cd $CURRENT
-
-

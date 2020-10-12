@@ -12,7 +12,8 @@ sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt autoremove -y
 
-printf "\n\t${COLOR}Installing Tensorflow 1.12${NC}\n"
-pip3 install --user tensorflow==1.15
+printf "\n\t${COLOR}Installing Tensorflow Dtasets${NC}\n"
+pip3 install --user tensorflow-datasets
+
 
 cd $CURRENT

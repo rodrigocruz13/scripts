@@ -22,5 +22,3 @@ sudo apt install ./slack-desktop-*.deb -y
 
 sudo apt autoremove -y
 cd $HOME
-
-google-chrome
